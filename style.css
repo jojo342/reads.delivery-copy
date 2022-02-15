@@ -19,22 +19,39 @@ html, body{
 /* Structure of page grid */
 .wrapper{
   display: grid;
+  z-index: 1;
   grid-template-columns: 5.5vw 1fr;
   grid-template-rows: 10vh 90vh 20vh 65vh 73vh 150vh 100vh 100vh 100vh 100vh ; 
   /*10 rows in grid, the footer is separate from the grid*/
-  z-index: 1;
+  /* 
+  Rows
+  1.  10vh,  nav 
+  2.  90vh,  video bg
+  3.  20vh,  press for reads
+  4.  65vh,  thank you
+  5.  73vh,  news
+  6.  150vh, about
+  7.  100vh, kickstarter
+  8.  100vh, subscription
+  9.  100vh, contact
+  10. 100vh, carousel
+   */
 }
 
 /* temp borders */
-aside, header, .main, footer{
+/* aside, header, .main, footer{
   border: 1px solid black;
+} */
+/* positions each section in the 2nd column of the page */
+header, .video, .articles, .thanks, .news, .about, .kickstarter, .subscription, .contact, .carousel, footer{
+  position: absolute;
+  left:5.5vw;
+  width:94.5vw;
 }
 
-/* not fixed:   BUG    */
 header{
   position: fixed;
   top:0;
-  left: 5.5vw;
   background-color: #ffffff;
   display: grid;
   grid-template-columns: 25.45vw 40vw 22vw 7.5vw; /* width must equal 94.95*/
@@ -45,12 +62,11 @@ header{
 }
 
 aside{
-  grid-row: 1 / span 11;
+  position: absolute;
+  left: 0;
+  width: 5.5vw;
+  height: 900vh;
   background-color:#FAEC90;
-}
-
-footer{
-  height: 50vh;
 }
 
 /* .main divs */
@@ -60,16 +76,12 @@ footer{
   overflow-x: hidden;
   overflow-y: hidden;
   z-index: 1;
-  position: absolute;
-  left: 5.5vw;
   top:10vh;
   height: 90vh;
 }
 
 .articles{
-  position: absolute;
   top: 100vh;
-  left:5.5vw;
   width:100%;
   height: 20vh;
   background-color: #F1E6E0;
@@ -81,34 +93,54 @@ footer{
 
 .thanks{
   background-color: #F45817;
-  z-index: 0;
-  position: relative;
-  top:120vh;
+  top:120vh; 
+  height: 65vh;
 }
 
 .news{
   background-color: #528660;
+  /* .thanks top: 120vh + .thanks height: 65vh = 185vh */
+  top: 185vh;
+  height: 73vh;
 }
 
 .about{
   background-color: #1990C6;
+  top: 258vh;
+  height: 150vh;
 }
 
 .kickstarter{
   background-color: #F45817;
+  top: 408vh;
+  height: 74vh;
 }
 
 .subscription{
   background-color: #528660;
+  top: 482vh;
+  height: 173vh;
 }
 
 .contact{
   background-color: #F45817;
+  top: 655vh;
+  height: 135vh;
 }
 
 .carousel{
   background-color: #FAEC90;
+  top: 790vh;
+  height: 110vh;
 }
+
+footer{
+  height: 50vh;
+  top:900vh;
+  left:0;
+  width: 100%;
+}
+
 /* content for sections */
 
 /* aside */
@@ -122,10 +154,10 @@ footer{
     color: black;
     transform: rotate(180deg);
 	  /* transform-origin: left top 1; */
-    position: sticky;
+    position: absolute;
     top: 40vh;
     left: 2vw;
-    padding: 350px 0 0 0;
+    /* padding: 350px 0 0 0; */
   }
 
 /* header */
